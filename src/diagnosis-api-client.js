@@ -16,7 +16,7 @@ export function fetchBanks() {
   };
 }
 
-export function fetchCardsByBankId(bankId) {
+export function fetchCardsByBankId(bank) {
   return {
     "status": "OK",
     "data": [
@@ -65,5 +65,98 @@ export function fetchDestinations() {
           "officialName": "Aruba"
       }
     ]
+  };
+}
+
+export function fetchDiagnosis(card, destination) {
+  return {
+    "coverage": "PARTIALLY_COVERED",
+    "coveredPersons": {
+        "label": "Personnes couvertes conjoints et enfants du même foyer...",
+        "items": [
+          {
+            "id": "01108875-35de-415f-b95d-6f2af671a783",
+            "name": "titulaire carte ou contrat"
+          },
+          {
+            "id": "08f90eab-5c57-4e18-a7f9-22ce54b8f548",
+            "name": "enfant fiscalement à charge"
+          },
+          {
+            "id": "6e528f81-65b6-4ec0-acef-378baf862bce",
+            "name": "conjoint ou concubin"
+          },
+          {
+            "id": "7bf324c5-04da-4449-b909-738aa4c2155d",
+            "name": "petit-enfant"
+          },
+          {
+            "id": "8ffe2bba-e14e-4b27-b85f-a7487b720e3f",
+            "name": "ascendant fiscalement à charge"
+          }
+        ]
+    },
+    "coveredPersonsLimits": [
+          {
+              "limitedPersonId": "7bf324c5-04da-4449-b909-738aa4c2155d",
+              "name": "",
+              "included": true,
+              "comparator": "LESS",
+              "value": "25",
+              "unit": "ans"
+          },
+          {
+              "limitedPersonId": "7bf324c5-04da-4449-b909-738aa4c2155d",
+              "name": "couvert s'il voyage avec titulaire de la carte",
+              "included": true,
+              "comparator": "NA",
+              "value": "",
+              "unit": ""
+          },
+          {
+              "name": "assuré couvert si âgé (le premier jour du voyage)",
+              "included": true,
+              "comparator": "LESS",
+              "value": "76",
+              "unit": "ans"
+          },
+          {
+              "name": "les assurés peuvent voyager ensemble ou séparément",
+              "included": true,
+              "comparator": "NA",
+              "value": "",
+              "unit": ""
+          },
+          {
+              "limitedPersonId": "08f90eab-5c57-4e18-a7f9-22ce54b8f548",
+              "name": "",
+              "included": true,
+              "comparator": "LESS",
+              "value": "25",
+              "unit": "ans"
+          }
+      ],
+    "covers": [
+
+    ],
+    "coverageDuration": {
+      "assistance": {
+        "type": "LIMITED",
+        "periodInDays": 90,
+      },
+      "insurance": {
+        "type": "LIMITED",
+        "periodInDays": 180,
+      },
+      "label": "Durée du voyage inférieure à : 90 jours",
+    },
+    "paymentTerms": {
+        "fullPaymentRequired": true,
+        "label": "Pour être couvert, payez intégralement vos achats avec votre carte bancaire",
+    },
+    "tripType": {
+        "hasToBeALeisureTrip": false,
+        "label": "Valable dans le cadre d’un voyage privé ou professionnel"
+    }
   };
 }
