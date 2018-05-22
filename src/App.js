@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 import Banks from './Banks';
 import Cards from './Cards';
-import { fetchBanks, fetchCardsByBankId } from './diagnosis-api-client';
+import Destinations from './Destinations';
+import { fetchBanks, fetchCardsByBankId, fetchDestinations } from './diagnosis-api-client';
 
 class App extends Component {
   state = {
@@ -10,11 +11,14 @@ class App extends Component {
     selectedBank: null,
     cards: {},
     selectedCard: null,
+    destinations: {},
+    selectedDestination: null,
   };
 
   constructor() {
     super();
     this.state.banks = fetchBanks();
+    this.state.destinations = fetchDestinations();
   }
 
   onBankClick = bank => {
@@ -30,12 +34,19 @@ class App extends Component {
     });
   }
 
+  onDestinationClick = destination => {
+    this.setState({
+      selectedDestination: destination,
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Vérifiez les assurances de votre carte</h1>
         <Banks banks={this.state.banks.data} onBankClick={this.onBankClick} />
         {this.state.cards.data && <Cards onCardClick={this.onCardClick} cards={this.state.cards.data} />}
+        {this.state.selectedCard && <Destinations onDestinationClick={this.onDestinationClick} destinations={this.state.destinations.data} />}
       </div>
     );
   }

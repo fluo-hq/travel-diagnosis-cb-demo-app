@@ -45,3 +45,25 @@ export function fetchCardsByBankId(bankId) {
     ]
   }
 }
+
+export function fetchDestinations() {
+  return {
+    "status": "OK",
+    "data": [
+      {
+          "alpha2Code": "AU",
+          "alpha3Code": "AUS",
+          "numericCode": 36,
+          "usualName": "Australie",
+          "officialName": "Australie (l')"
+      },
+      {
+          "alpha2Code": "AW",
+          "alpha3Code": "ABW",
+          "numericCode": 533,
+          "usualName": "Aruba",
+          "officialName": "Aruba"
+      }
+    ]
+  };
+}
