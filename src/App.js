@@ -7,7 +7,9 @@ import { fetchBanks, fetchCardsByBankId } from './diagnosis-api-client';
 class App extends Component {
   state = {
     banks: {},
+    selectedBank: null,
     cards: {},
+    selectedCard: null,
   };
 
   constructor() {
@@ -15,16 +17,17 @@ class App extends Component {
     this.state.banks = fetchBanks();
   }
 
-  // /diagnosis/payment_card/v1/banks
-
   onBankClick = bank => {
     this.setState({
-      cards: fetchCardsByBankId(bank.id)
+      cards: fetchCardsByBankId(bank.id),
+      selectedBank: bank,
     });
   }
 
   onCardClick = card => {
-    console.log('card selected : ', card.name);
+    this.setState({
+      selectedCard: card,
+    });
   }
 
   render() {
