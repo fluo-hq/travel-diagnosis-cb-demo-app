@@ -1,14 +1,16 @@
 import React from 'react';
 
 import CoveredTravallers from './CoveredTravellers'; 
+import ImportantInformation from './ImportantInformations';
 
 export default function Diagnosis(props) {
-  const { coverage, covers, coveredPersons, coveredPersonsLimits } = props.diagnosis
+  const { coverage, covers, coveredPersons, coveredPersonsLimits, paymentTerms, tripType } = props.diagnosis
   return (
     <div>
       <h2>Diagnosis</h2>
       <h3>{getCoverageDescription(coverage)}</h3>
       <ul>{getCoversDescription(covers)}</ul>
+      <ImportantInformation paymentTerms={paymentTerms} tripType={tripType} />
       <CoveredTravallers coveredPersons={coveredPersons} coveredPersonsLimits={coveredPersonsLimits} />
     </div>
   );
