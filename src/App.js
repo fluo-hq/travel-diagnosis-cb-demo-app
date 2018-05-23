@@ -46,9 +46,10 @@ class App extends Component {
   }
 
   onDestinationClick = async destination => {
+    const diagnosis = await fetchDiagnosis(this.state.selectedCard, destination);
     this.setState({
       selectedDestination: destination,
-      currentDiagnosis: await fetchDiagnosis(this.state.selectedCard, destination),
+      currentDiagnosis: diagnosis.data,
     });
   }
 
