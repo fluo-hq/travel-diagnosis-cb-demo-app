@@ -4,11 +4,11 @@ import Banks from './Banks';
 import Cards from './Cards';
 import Destinations from './Destinations';
 import Diagnosis from './Diagnosis';
-import { fetchBanks, fetchCardsByBankId, fetchDestinations, fetchDiagnosis } from './diagnosis-api-client';
+import { fetchBanks, fetchCardsByBank, fetchDestinations, fetchDiagnosis } from './diagnosis-api-client';
 
 class App extends Component {
   state = {
-    banks: {},
+    banks: [],
     selectedBank: null,
     cards: {},
     selectedCard: null,
@@ -19,13 +19,22 @@ class App extends Component {
 
   constructor() {
     super();
-    this.state.banks = fetchBanks();
-    this.state.destinations = fetchDestinations();
+  }
+  
+  componentWillMount() {
+    (async () => {
+      const banks = await fetchBanks();
+      const destinations = await fetchDestinations();
+      this.setState({
+        banks: banks.data,
+        destinations: destinations.data
+      });
+    })();
   }
 
-  onBankClick = bank => {
+  onBankClick = async bank => {
     this.setState({
-      cards: fetchCardsByBankId(bank.id),
+      cards: await fetchCardsByBank(bank),
       selectedBank: bank,
     });
   }
@@ -36,10 +45,10 @@ class App extends Component {
     });
   }
 
-  onDestinationClick = destination => {
+  onDestinationClick = async destination => {
     this.setState({
       selectedDestination: destination,
-      currentDiagnosis: fetchDiagnosis(this.state.selectedCard, this.state.selectedDestination),
+      currentDiagnosis: await fetchDiagnosis(this.state.selectedCard, destination),
     });
   }
 
@@ -47,9 +56,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Vérifiez les assurances de votre carte</h1>
-        <div className="card-selector"><Banks banks={this.state.banks.data} onBankClick={this.onBankClick} /></div>
+        <div className="card-selector"><Banks banks={this.state.banks} onBankClick={this.onBankClick} /></div>
         {this.state.cards.data && <div className="card-selector"><Cards onCardClick={this.onCardClick} cards={this.state.cards.data} /></div>}
-        {this.state.selectedCard && <div className="destination-selector"><Destinations onDestinationClick={this.onDestinationClick} destinations={this.state.destinations.data} /></div>}
+        {this.state.selectedCard && <div className="destination-selector"><Destinations onDestinationClick={this.onDestinationClick} destinations={this.state.destinations} /></div>}
         {this.state.currentDiagnosis && <div className="diagnosis"><Diagnosis diagnosis={this.state.currentDiagnosis} /></div>}
       </div>
     );

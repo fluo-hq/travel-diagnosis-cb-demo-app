@@ -1,218 +1,51 @@
-export function fetchBanks() {
-  return {
-    "status": "OK",
-    "data": [
-      {
-        "id":"5f43e8cd-d250-46e8-83a2-7d2b53cca9d3", 
-        "name":"Air France KLM",
-        "imageURL":"https://api-partner.fluo.com/v1/1E84C2CA-7B56-41E0-901B-A94170B027B8/image/bank/AirFrance.png"
-      },
-      {
-        "id":"7f9d3449-f687-4673-ac9f-08cd95a889a9",
-        "name":"Allianz Banque",
-        "imageURL":"https://api-partner.fluo.com/v1/1E84C2CA-7B56-41E0-901B-A94170B027B8/image/bank/Allianz.png"
-      }
-    ]
-  };
-}
+const BASE_URL = "";
+const TOKEN = "";
 
-export function fetchCardsByBankId(bank) {
-  return {
-    "status": "OK",
-    "data": [
-        {
-            "id":"1db2fd42-8799-4763-8f74-331cd12a61b9",
-            "name":"Amex Gold (Air France KLM)",
-            "cardType": {
-                "id":"23fcc79d-d1ca-4890-8093-71f875991d81",
-                "imageURL":"https://api-partner.fluo.com/v1/1E84C2CA-7B56-41E0-901B-A94170B027B8/image/card/AmericanExpressGold.png",
-                "name":"American Express Gold",
-                "type": "AMEX",
-            },
-            "bankId": "5f43e8cd-d250-46e8-83a2-7d2b53cca9d3"
-        },
-        {
-            "id":"cad56636-9030-40a0-956f-d369e0a56849",
-            "name":"Amex Platinum (Air France KLM)",
-            "cardType": {
-                "id":"039145a3-3b44-4f8a-9e3d-c0638c6bc8cc",
-                "imageURL":"https://api-partner.fluo.com/v1/1E84C2CA-7B56-41E0-901B-A94170B027B8/image/card/AmericanExpressPlatinum.png",
-                "name":"American Express Platinum",
-                "type": "AMEX",
-            },
-            "bankId": "5f43e8cd-d250-46e8-83a2-7d2b53cca9d3"
-        }
-    ]
-  }
-}
-
-export function fetchDestinations() {
-  return {
-    "status": "OK",
-    "data": [
-      {
-          "alpha2Code": "AU",
-          "alpha3Code": "AUS",
-          "numericCode": 36,
-          "usualName": "Australie",
-          "officialName": "Australie (l')"
-      },
-      {
-          "alpha2Code": "AW",
-          "alpha3Code": "ABW",
-          "numericCode": 533,
-          "usualName": "Aruba",
-          "officialName": "Aruba"
-      }
-    ]
-  };
-}
-
-export function fetchDiagnosis(card, destination) {
-  return {
-    "coverage": "PARTIALLY_COVERED",
-    "coveredPersons": {
-        "label": "Personnes couvertes conjoints et enfants du même foyer...",
-        "items": [
-          {
-            "id": "01108875-35de-415f-b95d-6f2af671a783",
-            "name": "titulaire carte ou contrat"
-          },
-          {
-            "id": "08f90eab-5c57-4e18-a7f9-22ce54b8f548",
-            "name": "enfant fiscalement à charge"
-          },
-          {
-            "id": "6e528f81-65b6-4ec0-acef-378baf862bce",
-            "name": "conjoint ou concubin"
-          },
-          {
-            "id": "7bf324c5-04da-4449-b909-738aa4c2155d",
-            "name": "petit-enfant"
-          },
-          {
-            "id": "8ffe2bba-e14e-4b27-b85f-a7487b720e3f",
-            "name": "ascendant fiscalement à charge"
-          }
-        ]
-    },
-    "coveredPersonsLimits": [
-          {
-              "limitedPersonId": "7bf324c5-04da-4449-b909-738aa4c2155d",
-              "name": "",
-              "included": true,
-              "comparator": "LESS",
-              "value": "25",
-              "unit": "ans"
-          },
-          {
-              "limitedPersonId": "7bf324c5-04da-4449-b909-738aa4c2155d",
-              "name": "couvert s'il voyage avec titulaire de la carte",
-              "included": true,
-              "comparator": "NA",
-              "value": "",
-              "unit": ""
-          },
-          {
-              "name": "assuré couvert si âgé (le premier jour du voyage)",
-              "included": true,
-              "comparator": "LESS",
-              "value": "76",
-              "unit": "ans"
-          },
-          {
-              "name": "les assurés peuvent voyager ensemble ou séparément",
-              "included": true,
-              "comparator": "NA",
-              "value": "",
-              "unit": ""
-          },
-          {
-              "limitedPersonId": "08f90eab-5c57-4e18-a7f9-22ce54b8f548",
-              "name": "",
-              "included": true,
-              "comparator": "LESS",
-              "value": "25",
-              "unit": "ans"
-          }
-      ],
-    "covers": [{
-      "typeId": "a6a83424-86f9-4a49-9116-77ae95940513",
-      "name": "Frais médicaux (étranger)",
-      "description": "Avance et remboursement des frais médicaux à l'étranger en cas d'accident ou de maladie de l'assuré ou des accompagnants (frais d'hospitalisation, honoraires médicaux, frais de médicaments prescrits, frais d'ambulance).",
-      "coverage": "PARTIALLY_COVERED",
-      "coverageReason": {
-        "id": "65ecec0b-08a6-4660-b8cf-0cb1711ade7e",
-        "label": "Votre carte vous couvre à hauteur de 155 000 €, c'est insuffisant pour la destination 'Etats-Unis', nous recommendons 300 000 €"
-      },
-      "assistance": true,
-      "limits": [{
-        "description": "plafond par assuré et par événement",
-        "typeId": "04ff46e0-719d-431b-8ad9-9be2673750f7",
-        "isActualCosts": false,
-        "value": 155000,
-        "currency": {
-          "code": "EUR",
-          "sign": "€"
-        },
-        "recommendedValue": 300000
-      }],
-      "deductibles": [{
-        "description": "franchise",
-        "value": 50,
-        "unit": {
-          "code": "EUR",
-          "label": "€"
-        }
-      },{
-        "description": "franchise si l'annulation vient de l'employeur (changement congés payés)",
-        "percentage": 20,
-        "percentageUnit": {
-          "code": "TRAVEL_COST",
-          "label": "du coût du voyage"
-        }
-      }],
-    },
-    {
-      "typeId": "a6a83424-86f8-4a49-9116-77ae95940513",
-      "name": "Transport rapatriement",
-      "description": "Avance et remboursement des frais médicaux à l'étranger en cas d'accident ou de maladie de l'assuré ou des accompagnants (frais d'hospitalisation, honoraires médicaux, frais de médicaments prescrits, frais d'ambulance).",
-      "coverage": "COVERED",
-      "coverageReason": {
-        "id": "65ecec0b-08a6-4660-b8cf-0cb1711ade7e",
-        "label": "Votre carte vous couvre à hauteur de 155 000 €, c'est insuffisant pour la destination 'Etats-Unis', nous recommendons 300 000 €"
-      },
-      "assistance": true,
-      "limits": [],
-      "deductibles": [],
-    },
-    {
-      "typeId": "a6a83424-86f8-4a49-9116-77ae95940553",
-      "name": "Assistance médicale",
-      "description": "Avance et remboursement des frais médicaux à l'étranger en cas d'accident ou de maladie de l'assuré ou des accompagnants (frais d'hospitalisation, honoraires médicaux, frais de médicaments prescrits, frais d'ambulance).",
-      "coverage": "COVERED",
-      "assistance": true,
-      "limits": [],
-      "deductibles": [],
-    }],
-    "coverageDuration": {
-      "assistance": {
-        "type": "LIMITED",
-        "periodInDays": 90,
-      },
-      "insurance": {
-        "type": "LIMITED",
-        "periodInDays": 180,
-      },
-      "label": "Durée du voyage inférieure à : 90 jours",
-    },
-    "paymentTerms": {
-        "fullPaymentRequired": true,
-        "label": "Pour être couvert, payez intégralement vos achats avec votre carte bancaire",
-    },
-    "tripType": {
-        "hasToBeALeisureTrip": false,
-        "label": "Valable dans le cadre d’un voyage privé ou professionnel"
+export async function fetchBanks() {
+  const response = await fetch(BASE_URL + '/diagnosis/payment_card/v1/banks', {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + TOKEN
     }
-  }
+  });
+  
+  return await response.json();
+}
+
+export async function fetchCardsByBank(bank) {
+  const response = await fetch(`${BASE_URL}/diagnosis/payment_card/v1/banks/${bank.id}/cards`, {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + TOKEN
+    }
+  });
+  
+  return await response.json();
+}
+
+export async function fetchDestinations() {
+  const response = await fetch(`${BASE_URL}/diagnosis/v1/countries`, {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + TOKEN
+    }
+  });
+  
+  return await response.json();
+}
+
+export async function fetchDiagnosis(card, destination) {
+  const response = await fetch(`${BASE_URL}/diagnosis/payment_card/v1/diagnoses`, {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + TOKEN
+    },
+    body: JSON.stringify({
+      "contextType": "TRAVEL",
+      "cardId": card.id,
+      "travelDestination": destination.alpha2Code.toLowerCase(),
+    })
+  });
+  
+  return await response.json();
 }
