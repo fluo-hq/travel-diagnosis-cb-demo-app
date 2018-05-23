@@ -1,6 +1,7 @@
 import React from 'react';
 
 import CoverLimits from './CoverLimits';
+import CoverDeductibles from './CoverDeductibles';
 
 export default function Covers(props) {
   return (
@@ -15,6 +16,7 @@ export default function Covers(props) {
               <em>{cover.description}</em>
               <br />
               <CoverLimits limits={cover.limits} />
+              <CoverDeductibles deductibles={cover.deductibles} />
             </li>
           );
         })}

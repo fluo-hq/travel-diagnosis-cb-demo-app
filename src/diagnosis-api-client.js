@@ -157,7 +157,21 @@ export function fetchDiagnosis(card, destination) {
         },
         "recommendedValue": 300000
       }],
-      "deductibles": [],
+      "deductibles": [{
+        "description": "franchise",
+        "value": 50,
+        "unit": {
+          "code": "EUR",
+          "label": "€"
+        }
+      },{
+        "description": "franchise si l'annulation vient de l'employeur (changement congés payés)",
+        "percentage": 20,
+        "percentageUnit": {
+          "code": "TRAVEL_COST",
+          "label": "du coût du voyage"
+        }
+      }],
     },
     {
       "typeId": "a6a83424-86f8-4a49-9116-77ae95940513",
