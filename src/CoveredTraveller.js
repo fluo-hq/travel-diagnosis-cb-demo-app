@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Limits from './Limits'
+import PersonLimits from './PersonLimits'
 
 export default function CoveredTravaller(props) {
   const limits = getLimitsForCoveredPerson(props.coveredPersonsLimits, props.coveredPerson)
   return (
     <span>
       {props.coveredPerson.name}
-      <Limits limits={limits}/>
+      <PersonLimits limits={limits}/>
     </span>
   );
 }

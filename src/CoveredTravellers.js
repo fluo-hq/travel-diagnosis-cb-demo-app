@@ -1,7 +1,7 @@
 import React from 'react';
 
 import CoveredTravaller from './CoveredTraveller';
-import { formatLimit } from './Limits';
+import { formatLimit } from './limits';
 
 export default function CoveredTravallers(props) {
   return (
