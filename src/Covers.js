@@ -1,5 +1,7 @@
 import React from 'react';
 
+import CoverLimits from './CoverLimits';
+
 export default function Covers(props) {
   return (
     <ul>
@@ -11,6 +13,8 @@ export default function Covers(props) {
               {cover.coverageReason ? 'A savoir : ' + cover.coverageReason.label : null}
               {cover.coverageReason && <br />}
               <em>{cover.description}</em>
+              <br />
+              <CoverLimits limits={cover.limits} />
             </li>
           );
         })}

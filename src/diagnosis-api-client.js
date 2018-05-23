@@ -146,7 +146,17 @@ export function fetchDiagnosis(card, destination) {
         "label": "Votre carte vous couvre à hauteur de 155 000 €, c'est insuffisant pour la destination 'Etats-Unis', nous recommendons 300 000 €"
       },
       "assistance": true,
-      "limits": [],
+      "limits": [{
+        "description": "plafond par assuré et par événement",
+        "typeId": "04ff46e0-719d-431b-8ad9-9be2673750f7",
+        "isActualCosts": false,
+        "value": 155000,
+        "currency": {
+          "code": "EUR",
+          "sign": "€"
+        },
+        "recommendedValue": 300000
+      }],
       "deductibles": [],
     },
     {
