@@ -27,7 +27,8 @@ function getCoversDescription(covers) {
   return covers.map(cover => {
     return (
       <li key={cover.typeId}>
-        {cover.name} - {getCoverageFrom(cover.coverage)}
+        {getCoverageFrom(cover.coverage)} - {cover.name}
+        <br /><em>{cover.description}</em>
       </li>
     )
   });
