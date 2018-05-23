@@ -161,6 +161,15 @@ export function fetchDiagnosis(card, destination) {
       "assistance": true,
       "limits": [],
       "deductibles": [],
+    },
+    {
+      "typeId": "a6a83424-86f8-4a49-9116-77ae95940553",
+      "name": "Assistance médicale",
+      "description": "Avance et remboursement des frais médicaux à l'étranger en cas d'accident ou de maladie de l'assuré ou des accompagnants (frais d'hospitalisation, honoraires médicaux, frais de médicaments prescrits, frais d'ambulance).",
+      "coverage": "COVERED",
+      "assistance": true,
+      "limits": [],
+      "deductibles": [],
     }],
     "coverageDuration": {
       "assistance": {
