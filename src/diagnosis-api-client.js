@@ -136,9 +136,32 @@ export function fetchDiagnosis(card, destination) {
               "unit": "ans"
           }
       ],
-    "covers": [
-
-    ],
+    "covers": [{
+      "typeId": "a6a83424-86f9-4a49-9116-77ae95940513",
+      "name": "Frais médicaux (étranger)",
+      "description": "Avance et remboursement des frais médicaux à l'étranger en cas d'accident ou de maladie de l'assuré ou des accompagnants (frais d'hospitalisation, honoraires médicaux, frais de médicaments prescrits, frais d'ambulance).",
+      "coverage": "PARTIALLY_COVERED",
+      "coverageReason": {
+        "id": "65ecec0b-08a6-4660-b8cf-0cb1711ade7e",
+        "label": "Votre carte vous couvre à hauteur de 155 000 €, c'est insuffisant pour la destination 'Etats-Unis', nous recommendons 300 000 €"
+      },
+      "assistance": true,
+      "limits": [],
+      "deductibles": [],
+    },
+    {
+      "typeId": "a6a83424-86f8-4a49-9116-77ae95940513",
+      "name": "Transport rapatriement",
+      "description": "Avance et remboursement des frais médicaux à l'étranger en cas d'accident ou de maladie de l'assuré ou des accompagnants (frais d'hospitalisation, honoraires médicaux, frais de médicaments prescrits, frais d'ambulance).",
+      "coverage": "COVERED",
+      "coverageReason": {
+        "id": "65ecec0b-08a6-4660-b8cf-0cb1711ade7e",
+        "label": "Votre carte vous couvre à hauteur de 155 000 €, c'est insuffisant pour la destination 'Etats-Unis', nous recommendons 300 000 €"
+      },
+      "assistance": true,
+      "limits": [],
+      "deductibles": [],
+    }],
     "coverageDuration": {
       "assistance": {
         "type": "LIMITED",
@@ -158,5 +181,5 @@ export function fetchDiagnosis(card, destination) {
         "hasToBeALeisureTrip": false,
         "label": "Valable dans le cadre d’un voyage privé ou professionnel"
     }
-  };
+  }
 }
