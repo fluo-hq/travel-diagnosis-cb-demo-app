@@ -1,7 +1,8 @@
 import React from 'react';
 
+import CoverDescription from './CoverDescription';
+
 export default function CoverLimits(props) {
-  // TODO: check cover limits data
   return (
     <ul>
       {props.limits.map((limit, index) => {
@@ -18,17 +19,13 @@ export default function CoverLimits(props) {
 function PartnerLimitBasedOnActualCosts(props) {
   const { limit } = props;
 
-  return (
-    <li>{limit.description}: frais réels</li>
-  );
+  return (<CoverDescription description={limit.description} value="frais réels" />)
 }
 
 function PartnerLimitBasedOnLimitedCost(props) {
   const { limit } = props;
   const recommanded = limit.recommendedValue ? ` (valeur recommandée: ${limit.recommendedValue} ${limit.currency.sign})` : '';
+  const value = `${limit.value} ${limit.currency.sign}${recommanded}`
 
-  const text = `${limit.description}: ${limit.value} ${limit.currency.sign}${recommanded}`
-  return (
-    <li>{text}</li>
-  );
+  return (<CoverDescription description={limit.description} value={value} />)
 }

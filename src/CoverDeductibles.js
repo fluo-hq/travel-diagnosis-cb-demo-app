@@ -1,5 +1,7 @@
 import React from 'react';
 
+import CoverDescription from './CoverDescription';
+
 export default function CoverDeductibles(props) {
   return (
     <ul>
@@ -17,17 +19,13 @@ export default function CoverDeductibles(props) {
 function PartnerVariableDeductible(props) {
   const { deductible } = props;
 
-  const text = `${deductible.description}: ${deductible.percentage}% ${deductible.percentageUnit.label}`
-  return (
-    <li>{text}</li>
-  );
+  const value = `${deductible.percentage}% ${deductible.percentageUnit.label}`
+  return (<CoverDescription description={deductible.description} value={value} />)
 }
 
 function PartnerFixedDeductible(props) {
   const { deductible } = props;
 
-  const text = `${deductible.description}: ${deductible.value} ${deductible.unit.label}`
-  return (
-    <li>{text}</li>
-  );
+  const value = `${deductible.value} ${deductible.unit.label}`
+  return (<CoverDescription description={deductible.description} value={value} />)
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 import PersonLimits from './PersonLimits'
 
-export default function CoveredTravaller(props) {
+export default function CoveredTraveller(props) {
   const limits = getLimitsForCoveredPerson(props.coveredPersonsLimits, props.coveredPerson)
   return (
     <span>

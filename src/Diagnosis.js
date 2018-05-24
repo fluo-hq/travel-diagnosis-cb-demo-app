@@ -1,11 +1,12 @@
 import React from 'react';
 
 import CoveredTravallers from './CoveredTravellers'; 
+import NotCoveredTravallers from './NotCoveredTravellers'; 
 import ImportantInformation from './ImportantInformations';
 import Covers from './Covers';
 
 export default function Diagnosis(props) {
-  const { coverage, covers, coveredPersons, coveredPersonsLimits, paymentTerms, tripType } = props.diagnosis
+  const { coverage, covers, coveredPersons, coveredPersonsLimits, paymentTerms, tripType, notCoveredPersons } = props.diagnosis
   return (
     <div>
       <h2>Diagnosis</h2>
@@ -13,6 +14,7 @@ export default function Diagnosis(props) {
       <Covers covers={covers}/>
       <ImportantInformation paymentTerms={paymentTerms} tripType={tripType} />
       <CoveredTravallers coveredPersons={coveredPersons} coveredPersonsLimits={coveredPersonsLimits} />
+      <NotCoveredTravallers notCoveredPersons={notCoveredPersons} />
     </div>
   );
 }

@@ -1,34 +1,25 @@
 import React from 'react';
 
-import CoverLimits from './CoverLimits';
-import CoverDeductibles from './CoverDeductibles';
+import Cover from './Cover';
 
 export default function Covers(props) {
+  const sortedCovers = sortMainFirst(props.covers);
+  const insuranceCovers = sortedCovers.filter(cover => cover.assistance)
+  const travelCovers = sortedCovers.filter(cover => !cover.assistance)
   return (
-    <ul>
-        {props.covers.map(cover => {
-          return (
-            <li key={cover.typeId}>
-              {getCoverageFrom(cover.coverage)} - {cover.name}
-              <br />
-              {cover.coverageReason ? 'A savoir : ' + cover.coverageReason.label : null}
-              {cover.coverageReason && <br />}
-              <em>{cover.description}</em>
-              <br />
-              <CoverLimits limits={cover.limits} />
-              <CoverDeductibles deductibles={cover.deductibles} />
-            </li>
-          );
-        })}
-    </ul>
+    <div>
+      <Cover type='Voyage' covers={travelCovers} />
+      <Cover type='Assitance' covers={insuranceCovers} />
+    </div>
   );
 }
 
-function getCoverageFrom(coverage) {
-  const descriptionByCoverage = {
-    'PARTIALLY_COVERED': "Partiellement couvert",
-    'NOT_COVERED': "Non couvert",
-    'COVERED': "Couvert"
-  }
-  return descriptionByCoverage[coverage];
+function sortMainFirst(covers) {
+  return [...covers].sort(cover => {
+    if (cover.isMain) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
 }
