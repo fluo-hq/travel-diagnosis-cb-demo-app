@@ -1,7 +1,6 @@
 import React from 'react';
-
-import CoverLimits from './CoverLimits';
 import CoverDeductibles from './CoverDeductibles';
+import CoverLimits from './CoverLimits';
 
 export default function Cover(props) {
   return (
@@ -13,26 +12,43 @@ export default function Cover(props) {
             <li key={cover.typeId}>
               {getCoverageFrom(cover.coverage)} - {cover.name}
               <br />
-              {cover.coverageReason ? 'A savoir : ' + cover.coverageReason.label : null}
+              <br />
+              <CoverageDuration duration={props.duration} />
+              <br />
+              <br />
+              {cover.coverageReason
+                ? 'A savoir : ' + cover.coverageReason.label
+                : null}
               {cover.coverageReason && <br />}
               <CoverLimits limits={cover.limits} />
               <CoverDeductibles deductibles={cover.deductibles} />
               <br />
-              <div dangerouslySetInnerHTML={{__html: cover.description}}></div>
+              <br />
+              <div dangerouslySetInnerHTML={{ __html: cover.description }} />
+              <br />
               <br />
             </li>
           );
         })}
-    </ul>
+      </ul>
     </div>
   );
 }
 
 function getCoverageFrom(coverage) {
   const descriptionByCoverage = {
-    'PARTIALLY_COVERED': "Partiellement couvert",
-    'NOT_COVERED': "Non couvert",
-    'COVERED': "Couvert"
-  }
+    PARTIALLY_COVERED: 'Partiellement couvert',
+    NOT_COVERED: 'Non couvert',
+    COVERED: 'Couvert',
+  };
   return descriptionByCoverage[coverage];
+}
+
+function CoverageDuration(props) {
+  const { duration } = props;
+  if (duration.type === 'LIMITED') {
+    return `Durée de garantie : ${duration.periodInDays} jours.`;
+  } else {
+    return `Durée de garantie : sans limite.`;
+  }
 }
