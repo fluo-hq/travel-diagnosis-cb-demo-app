@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
 import Banks from './Banks';
 import Cards from './Cards';
 import Destinations from './Destinations';
 import Diagnosis from './Diagnosis';
+
 import { fetchBanks, fetchCardsByBank, fetchDestinations, fetchDiagnosis } from './diagnosis-api-client';
 
 class App extends Component {
@@ -55,13 +58,23 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <h1>Vérifiez les assurances de votre carte</h1>
-        <div className="card-selector"><Banks banks={this.state.banks} onBankClick={this.onBankClick} /></div>
-        {this.state.cards.data && <div className="card-selector"><Cards onCardClick={this.onCardClick} cards={this.state.cards.data} /></div>}
-        {this.state.selectedCard && <div className="destination-selector"><Destinations onDestinationClick={this.onDestinationClick} destinations={this.state.destinations} /></div>}
-        {this.state.currentDiagnosis && <div className="diagnosis"><Diagnosis diagnosis={this.state.currentDiagnosis} /></div>}
-      </div>
+
+        <div className="App">
+          <Typography variant="headline" component="h1">
+            Vérifiez les assurances de votre carte
+          </Typography>
+          <Paper elevation={4}>
+            <Typography component="div">
+              <Banks banks={this.state.banks} onBankClick={this.onBankClick} />
+              {this.state.cards.data && <Cards onCardClick={this.onCardClick} cards={this.state.cards.data} />}
+              {this.state.selectedCard && <Destinations onDestinationClick={this.onDestinationClick} destinations={this.state.destinations} />}
+            </Typography>
+          </Paper>
+          <Paper elevation={4}>
+            {this.state.currentDiagnosis && <Diagnosis diagnosis={this.state.currentDiagnosis} />}
+          </Paper>
+        </div>
+
     );
   }
 }

@@ -9,7 +9,7 @@ export default function Diagnosis(props) {
   const { coverage, covers, coveredPersons, coveredPersonsLimits, paymentTerms, tripType, notCoveredPersons } = props.diagnosis
   return (
     <div>
-      <h2>Diagnosis</h2>
+      <h2>Diagnostique</h2>
       <h3>{getCoverageDescription(coverage)}</h3>
       <Covers covers={covers}/>
       <ImportantInformation paymentTerms={paymentTerms} tripType={tripType} />
