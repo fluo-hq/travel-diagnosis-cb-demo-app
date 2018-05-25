@@ -2,9 +2,12 @@ import React from 'react';
 import Cover from './Cover';
 
 export default function Covers(props) {
-  const sortedCovers = sortMainFirst(props.covers);
-  const insuranceCovers = sortedCovers.filter(cover => cover.assistance);
-  const travelCovers = sortedCovers.filter(cover => !cover.assistance);
+  const mainInsuranceCovers = extractMainCovers(props.covers).filter(cover => cover.assistance);
+  const insuranceCovers = extractStandardCovers(props.covers).filter(cover => cover.assistance);
+
+  const mainTravelCovers = extractMainCovers(props.covers).filter(cover => !cover.assistance);
+  const travelCovers = extractStandardCovers(props.covers).filter(cover => !cover.assistance);
+  
   const {
     insurance: travelDuration,
     assistance: assistanceDuration,
@@ -12,9 +15,10 @@ export default function Covers(props) {
 
   return (
     <div>
-      <Cover type="Voyage" covers={travelCovers} duration={travelDuration} />
+      <Cover type="Voyage" mainCovers={mainTravelCovers} covers={travelCovers} duration={travelDuration} />
       <Cover
         type="Assitance"
+        mainCovers={mainInsuranceCovers}
         covers={insuranceCovers}
         duration={assistanceDuration}
       />
@@ -22,12 +26,11 @@ export default function Covers(props) {
   );
 }
 
-function sortMainFirst(covers) {
-  return [...covers].sort(cover => {
-    if (cover.isMain) {
-      return -1;
-    } else {
-      return 1;
-    }
-  });
+// Main covers are, usually, the more important to show to end-user
+function extractMainCovers(covers) {
+  return covers.filter(cover => cover.isMain);
+}
+
+function extractStandardCovers(covers) {
+  return covers.filter(cover => !cover.isMain);
 }
