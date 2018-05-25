@@ -48,7 +48,7 @@ function CoverageDuration(props) {
   const { duration } = props;
   if (duration.type === 'LIMITED') {
     return `Durée de garantie : ${duration.periodInDays} jours.`;
-  } else {
+  } else if(duration.type === 'UNLIMITED') {
     return `Durée de garantie : sans limite.`;
   }
 }
