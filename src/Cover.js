@@ -27,10 +27,31 @@ function InnerCover(props) {
   return props.covers.map(cover => {
     return (
       <li key={cover.typeId}>
-        {getCoverageFrom(cover.coverage)} - {cover.name}
+        {getCoverageTitleFrom(cover)} 
+        {getCoverageDescriptionFrom(cover, props.duration)}
+      </li>
+    );
+  });
+}
+
+function getCoverageTitleFrom(cover) {
+  const descriptionByCoverage = {
+    PARTIALLY_COVERED: 'Partiellement couvert',
+    NOT_COVERED: 'Non couvert',
+    COVERED: 'Couvert',
+  };
+
+  return `${descriptionByCoverage[cover.coverage]} -  ${cover.name}`;
+}
+
+function getCoverageDescriptionFrom(cover, duration) {
+
+  if (cover.coverage !== 'NOT_COVERED') {
+    return (
+      <div>
         <br />
         <br />
-        <CoverageDuration duration={props.duration} />
+        <CoverageDuration duration={duration} />
         <br />
         <br />
         {cover.coverageReason
@@ -44,18 +65,16 @@ function InnerCover(props) {
         <div dangerouslySetInnerHTML={{ __html: cover.description }} />
         <br />
         <br />
-      </li>
-    );
-  });
-}
+      </div>
+      );
+  }
 
-function getCoverageFrom(coverage) {
-  const descriptionByCoverage = {
-    PARTIALLY_COVERED: 'Partiellement couvert',
-    NOT_COVERED: 'Non couvert',
-    COVERED: 'Couvert',
-  };
-  return descriptionByCoverage[coverage];
+  return (
+    <div>
+      <br />
+      <br />
+    </div>
+  );
 }
 
 function CoverageDuration(props) {
