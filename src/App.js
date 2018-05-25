@@ -60,18 +60,19 @@ class App extends Component {
     return (
 
         <div className="App">
-          <Typography variant="headline" component="h1">
-            Vérifiez les assurances de votre carte
-          </Typography>
           <Paper elevation={4}>
+            <Typography variant="headline" component="h1">
+              Vérifiez les assurances de votre carte
+            </Typography>
             <Typography component="div">
               <Banks banks={this.state.banks} onBankClick={this.onBankClick} />
               {this.state.cards.data && <Cards onCardClick={this.onCardClick} cards={this.state.cards.data} />}
               {this.state.selectedCard && <Destinations onDestinationClick={this.onDestinationClick} destinations={this.state.destinations} />}
             </Typography>
           </Paper>
+          <br /><br />
           <Paper elevation={4}>
-            {this.state.currentDiagnosis && <Diagnosis diagnosis={this.state.currentDiagnosis} />}
+            {this.state.currentDiagnosis && <Diagnosis diagnosis={this.state.currentDiagnosis} destination={this.state.selectedDestination} />}
           </Paper>
         </div>
 

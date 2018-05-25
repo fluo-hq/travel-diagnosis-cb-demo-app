@@ -1,4 +1,5 @@
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
 
 import NotCoveredTraveller from './NotCoveredTraveller';
 import { formatLimit } from './limits';
@@ -6,7 +7,7 @@ import { formatLimit } from './limits';
 export default function NotCoveredTravellers(props) {
   return (
     <div>
-      <h3>Voyageurs non couverts</h3>
+      <Typography variant="headline" component="h2">Voyageurs non couverts</Typography>
       <ul>
         {props.notCoveredPersons.items.map(notCoveredPerson => {
           return (

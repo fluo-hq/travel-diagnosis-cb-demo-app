@@ -8,17 +8,17 @@ import CoverLimits from './CoverLimits';
 export default function Cover(props) {
   return (
     <div>
-      <h1>{props.type}</h1>
-        <Paper elevation={1}>
-        <Typography  variant="headline" component="h2">Garanties principales</Typography>
-          <ul>
-            <InnerCover covers={props.mainCovers} duration={props.duration}/>
-          </ul>
-        </Paper>
-        <Typography  variant="headline" component="h2">Autres garanties</Typography>
+      <Typography  variant="headline" component="h1">{props.type}</Typography>
+      <Paper elevation={1}>
+      <Typography  variant="headline" component="h3">Garanties principales</Typography>
         <ul>
-          <InnerCover covers={props.covers} duration={props.duration} />
+          <InnerCover covers={props.mainCovers} duration={props.duration}/>
         </ul>
+      </Paper>
+      <Typography  variant="headline" component="h3">Autres garanties</Typography>
+      <ul>
+        <InnerCover covers={props.covers} duration={props.duration} />
+      </ul>
     </div>
   );
 }

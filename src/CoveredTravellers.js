@@ -1,4 +1,5 @@
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
 
 import CoveredTraveller from './CoveredTraveller';
 import { formatLimit } from './limits';
@@ -6,7 +7,7 @@ import { formatLimit } from './limits';
 export default function CoveredTravellers(props) {
   return (
     <div>
-      <h3>Voyageurs couverts</h3>
+      <Typography variant="headline" component="h2">Voyageurs couverts</Typography>
       {getGlobalLimits(props.coveredPersonsLimits).map((globalLimit, index) => {
           return <em key={index}>{formatLimit(globalLimit)}<br/></em>
         })}

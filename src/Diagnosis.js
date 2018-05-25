@@ -1,4 +1,6 @@
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
+
 import CoveredTravallers from './CoveredTravellers';
 import Covers from './Covers';
 import ImportantInformation from './ImportantInformations';
@@ -17,10 +19,10 @@ export default function Diagnosis(props) {
   } = props.diagnosis;
   return (
     <div>
-      <h2>Diagnostique</h2>
+      <Typography variant="headline" component="h1">Diagnostique de la carte pour la destination : {props.destination.usualName}</Typography>
       <h3>{getCoverageDescription(coverage)}</h3>
-      <Covers covers={covers} coverageDuration={coverageDuration} />
       <ImportantInformation paymentTerms={paymentTerms} tripType={tripType} />
+      <Covers covers={covers} coverageDuration={coverageDuration} />
       <CoveredTravallers
         coveredPersons={coveredPersons}
         coveredPersonsLimits={coveredPersonsLimits}
