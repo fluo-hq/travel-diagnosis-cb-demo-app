@@ -45,9 +45,13 @@ export default class Cards extends React.Component {
 
   renderValue = cardId => {
     const card = this.findCardById(cardId);
-    return (
-      <span><img src={card.cardType.imageURL} style={{ display: "inline-block", verticalAlign: "middle", marginRight: "5px"}} height="19px" alt="card"/>{card.name}</span>
-    );
+    if (card === undefined) {
+      return null;
+    } else {
+        return (
+          <span><img src={card.cardType.imageURL} style={{ display: "inline-block", verticalAlign: "middle", marginRight: "5px"}} height="19px" alt="card"/>{card.name}</span>
+        );
+    }
   }
 
   findCardById = (id) => {

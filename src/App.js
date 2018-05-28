@@ -39,6 +39,7 @@ class App extends Component {
     this.setState({
       cards: await fetchCardsByBank(bank),
       selectedBank: bank,
+      selectedCard: null,
     });
   }
 
