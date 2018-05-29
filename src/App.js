@@ -24,15 +24,13 @@ class App extends Component {
     super();
   }
   
-  componentWillMount() {
-    (async () => {
+  async componentDidMount() {
       const banks = await fetchBanks();
       const destinations = await fetchDestinations();
       this.setState({
         banks: banks.data,
         destinations: destinations.data
       });
-    })();
   }
 
   onBankClick = async bank => {
