@@ -6,10 +6,16 @@ export default function CoverLimits(props) {
   return (
     <ul>
       {props.limits.map((limit, index) => {
-        if (limit.isActualCosts) {
+        if (limit.isActualCosts === true) {
           return <PartnerLimitBasedOnActualCosts limit={limit} key={index} />
-        } else {
+        } else if (limit.isActualCosts === false) {
           return <PartnerLimitBasedOnLimitedCosts limit={limit} key={index} />
+        } else if (limit.type === 'LIMITED') {
+          return <PartnerLimitBaseOnLimitedDuration limit={limit} key={index} />          
+        } else if (limit.type === 'UNLIMITED') {
+          return <PartnerLimitBaseOnUnlimitedDuration limit={limit} key={index} />          
+        } else {
+          throw new Error(`The limit ${JSON.stringify(limit)} cannot be displayed`)
         }
       })}
     </ul>
@@ -28,4 +34,27 @@ function PartnerLimitBasedOnLimitedCosts(props) {
   const value = `${limit.value} ${limit.currency.sign}${recommanded}`
 
   return (<CoverDescription description={limit.description} value={value} />)
+}
+
+function PartnerLimitBaseOnLimitedDuration(props) {
+  const { limit } = props;
+  const value = `${limit.value} ${getUnit(limit.unit)}`;
+
+  return (
+    <CoverDescription description={limit.description} value={value} />
+  )
+}
+
+function PartnerLimitBaseOnUnlimitedDuration(props) {
+  return (
+    <CoverDescription description={props.limit.description} value="" />
+  )
+}
+
+function getUnit(unit) {
+  switch(unit) {
+    case 'DAY': return 'jour(s)';
+    case 'MONTH': return 'mois';
+    default: throw new Error(`Unit ${unit} is not handled`);
+  }
 }
