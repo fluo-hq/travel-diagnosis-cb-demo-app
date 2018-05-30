@@ -1,8 +1,17 @@
+import React from 'react';
+
+import Ko from './Ko';
+import Ok from './Ok';
+
 export function formatLimit(limit) {
   const text = getComparatorText(limit.comparator);
   const included = getInclutionText(limit.included);
 
-  return ` - (${included} ${limit.name} ${text} ${limit.value} ${limit.unit})`;
+  return (
+    <span>
+      {included} {limit.name} {text} {limit.value} {limit.unit}
+    </span>
+  );
 }
 
 function getComparatorText (comparator) {
@@ -22,8 +31,8 @@ function getComparatorText (comparator) {
 
 function getInclutionText(included) {
   if (included) {
-    return '[INCLUS] ';
+    return <Ok />;
   } else {
-    return '[EXCLUS] ';
+    return <Ko />;
   }
 }

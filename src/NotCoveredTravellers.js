@@ -2,7 +2,6 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 
 import NotCoveredTraveller from './NotCoveredTraveller';
-import { formatLimit } from './limits';
 
 export default function NotCoveredTravellers(props) {
   return (

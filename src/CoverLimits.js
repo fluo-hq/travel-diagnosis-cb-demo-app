@@ -9,7 +9,7 @@ export default function CoverLimits(props) {
         if (limit.isActualCosts) {
           return <PartnerLimitBasedOnActualCosts limit={limit} key={index} />
         } else {
-          return <PartnerLimitBasedOnLimitedCost limit={limit} key={index} />
+          return <PartnerLimitBasedOnLimitedCosts limit={limit} key={index} />
         }
       })}
     </ul>
@@ -22,7 +22,7 @@ function PartnerLimitBasedOnActualCosts(props) {
   return (<CoverDescription description={limit.description} value="frais réels" />)
 }
 
-function PartnerLimitBasedOnLimitedCost(props) {
+function PartnerLimitBasedOnLimitedCosts(props) {
   const { limit } = props;
   const recommanded = limit.recommendedValue ? ` (valeur recommandée: ${limit.recommendedValue} ${limit.currency.sign})` : '';
   const value = `${limit.value} ${limit.currency.sign}${recommanded}`

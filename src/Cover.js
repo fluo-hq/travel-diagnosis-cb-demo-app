@@ -4,6 +4,9 @@ import Typography from '@material-ui/core/Typography';
 
 import CoverDeductibles from './CoverDeductibles';
 import CoverLimits from './CoverLimits';
+import Ko from './Ko';
+import Ok from './Ok';
+import Warning from './Warning';
 
 export default function Cover(props) {
   return (
@@ -36,12 +39,16 @@ function InnerCover(props) {
 
 function getCoverageTitleFrom(cover) {
   const descriptionByCoverage = {
-    PARTIALLY_COVERED: 'Partiellement couvert',
-    NOT_COVERED: 'Non couvert',
-    COVERED: 'Couvert',
+    PARTIALLY_COVERED: <Warning />,
+    NOT_COVERED: <Ko />,
+    COVERED: <Ok />
   };
 
-  return `${descriptionByCoverage[cover.coverage]} -  ${cover.name}`;
+  return (
+    <span>
+      {descriptionByCoverage[cover.coverage]} {cover.name};
+    </span>
+  );
 }
 
 function getCoverageDescriptionFrom(cover, duration) {

@@ -19,10 +19,6 @@ class App extends Component {
     selectedDestination: null,
     currentDiagnosis: null,
   };
-
-  constructor() {
-    super();
-  }
   
   async componentDidMount() {
       const banks = await fetchBanks();
