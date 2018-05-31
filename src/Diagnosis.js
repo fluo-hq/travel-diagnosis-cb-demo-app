@@ -19,7 +19,7 @@ export default function Diagnosis(props) {
   } = props.diagnosis;
   return (
     <div>
-      <Typography variant="headline" component="h1">Diagnostique de la carte pour la destination : {props.destination.usualName}</Typography>
+      <Typography variant="headline" component="h1" id="diagnosis-title">Diagnostique de la carte pour la destination : {props.destination.usualName}</Typography>
       <h3>{getCoverageDescription(coverage)}</h3>
       <ImportantInformation paymentTerms={paymentTerms} tripType={tripType} />
       <Covers covers={covers} coverageDuration={coverageDuration} />
