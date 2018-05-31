@@ -12,19 +12,20 @@ export default class Banks extends React.Component {
 
   render() {
     return (
-      <FormControl>
+      <FormControl id="bank-control">
         <Select
           value={this.state.selectedItemId}        
           onChange={this.handleChange}
           renderValue={this.renderValue}
           autoWidth
+          id="bank-selector"
         >
             <MenuItem value="">
               None
             </MenuItem>
             {this.props.banks.map(bank => {
               return (
-                <MenuItem key={bank.id} value={bank.id}>
+                <MenuItem key={bank.id} value={bank.id} data-type="bank">
                   {this.renderValue(bank.id)}
                 </MenuItem>
               );

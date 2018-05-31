@@ -12,7 +12,7 @@ export default class Destinations extends React.Component {
 
   render() {
     return (
-      <FormControl>
+      <FormControl id="destination-control">
         <Select
           value={this.state.selectedItem}
           onChange={this.handleChange}
@@ -23,7 +23,7 @@ export default class Destinations extends React.Component {
             </MenuItem>
             {this.props.destinations.map(destination => {
               return (
-                <MenuItem key={destination.numericCode} value={destination.numericCode}>
+                <MenuItem key={destination.numericCode} value={destination.numericCode} data-type="destination">
                   {destination.usualName}
                 </MenuItem>
               );

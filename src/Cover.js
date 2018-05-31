@@ -44,6 +44,11 @@ function getCoverageTitleFrom(cover) {
     COVERED: <Ok />
   };
 
+  const description = descriptionByCoverage[cover.coverage];
+  if (!description) {
+    throw new Error(`Unknow coverage ${cover.coverage}`);
+  }
+
   return (
     <span>
       {descriptionByCoverage[cover.coverage]} {cover.name};
@@ -91,4 +96,6 @@ function CoverageDuration(props) {
   } else if(duration.type === 'UNLIMITED') {
     return `Durée de garantie : sans limite.`;
   }
+
+  throw new Error(`Unknown duration type : ${duration.type}`)
 }

@@ -12,7 +12,7 @@ export default class Cards extends React.Component {
 
   render() {
     return (
-      <FormControl>
+      <FormControl id="card-control">
         <Select
           value={this.state.selectedItem}        
           onChange={this.handleChange}
@@ -24,7 +24,7 @@ export default class Cards extends React.Component {
             </MenuItem>
             {this.props.cards.map(card => {
               return (
-                <MenuItem key={card.id} value={card.id}>
+                <MenuItem key={card.id} value={card.id} data-type="card">
                   {this.renderValue(card.id)}
                 </MenuItem>
               );
@@ -45,13 +45,9 @@ export default class Cards extends React.Component {
 
   renderValue = cardId => {
     const card = this.findCardById(cardId);
-    if (card === undefined) {
-      return null;
-    } else {
-        return (
-          <span><img src={card.cardType.imageURL} style={{ display: "inline-block", verticalAlign: "middle", marginRight: "5px"}} height="19px" alt="card"/>{card.name}</span>
-        );
-    }
+    return (
+      <span><img src={card.cardType.imageURL} style={{ display: "inline-block", verticalAlign: "middle", marginRight: "5px"}} height="19px" alt="card"/>{card.name}</span>
+    );
   }
 
   findCardById = (id) => {

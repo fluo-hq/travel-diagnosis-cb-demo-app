@@ -39,5 +39,11 @@ function getCoverageDescription(coverage) {
     NOT_COVERED: 'Votre carte ne couvre pas votre destination',
     COVERED: 'Votre carte couvre votre destination',
   };
-  return descriptionByCoverage[coverage];
+
+  const description = descriptionByCoverage[coverage];
+  if (!description) {
+    throw new Error(`Unknown coverage : ${coverage}`);
+  }
+
+  return description;
 }

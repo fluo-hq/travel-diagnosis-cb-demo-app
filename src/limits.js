@@ -25,14 +25,16 @@ function getComparatorText (comparator) {
     case 'NA':
       return '';
     default:
-      alert('Unknown comparator :' + comparator)
+      throw new Error(`Unknown comparator : ${comparator}`);
   }
 }
 
 function getInclutionText(included) {
-  if (included) {
+  if (included === true) {
     return <Ok />;
-  } else {
+  } else if (included === false) {
     return <Ko />;
   }
+
+  throw new Error(`Unknown included value : ${included}`);
 }
