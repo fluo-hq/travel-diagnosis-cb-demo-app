@@ -6,13 +6,13 @@ export default function CoverLimits(props) {
   return (
     <ul>
       {props.limits.map((limit, index) => {
-        if (limit.isActualCosts === true) {
+        if (limit.type === 'ACTUAL_COST') {
           return <PartnerLimitBasedOnActualCosts limit={limit} key={index} />
-        } else if (limit.isActualCosts === false) {
+        } else if (limit.type === 'LIMITED_COST') {
           return <PartnerLimitBasedOnLimitedCosts limit={limit} key={index} />
-        } else if (limit.type === 'LIMITED') {
+        } else if (limit.type === 'LIMITED_DURATION') {
           return <PartnerLimitBaseOnLimitedDuration limit={limit} key={index} />          
-        } else if (limit.type === 'UNLIMITED') {
+        } else if (limit.type === 'UNLIMITED_DURATION') {
           return <PartnerLimitBaseOnUnlimitedDuration limit={limit} key={index} />          
         } else {
           throw new Error(`The limit ${JSON.stringify(limit)} cannot be displayed`)
