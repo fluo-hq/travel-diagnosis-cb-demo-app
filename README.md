@@ -12,3 +12,7 @@
 ## Usage 
 
 Run `yarn start`. Enjoy!
+
+## API documentation
+
+Fluo API travel CB diagnosis is available [here](https://api-docs.fluo.com/payment-card-diagnosis.html)
