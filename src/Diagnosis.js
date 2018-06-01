@@ -1,10 +1,10 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 
-import CoveredTravallers from './CoveredTravellers';
+import CoveredTravellers from './CoveredTravellers';
 import Covers from './Covers';
 import ImportantInformation from './ImportantInformations';
-import NotCoveredTravallers from './NotCoveredTravellers';
+import NotCoveredTravellers from './NotCoveredTravellers';
 
 export default function Diagnosis(props) {
   const {
@@ -24,11 +24,11 @@ export default function Diagnosis(props) {
       <h3>{getCoverageDescription(coverage)}</h3>
       <ImportantInformation paymentTerms={paymentTerms} tripType={tripType} majorInsuranceCriteria={majorInsuranceCriteria} />
       <Covers covers={covers} coverageDuration={coverageDuration} />
-      <CoveredTravallers
+      {coveredPersons.items.length !== 0 && <CoveredTravellers
         coveredPersons={coveredPersons}
         coveredPersonsLimits={coveredPersonsLimits}
-      />
-      <NotCoveredTravallers notCoveredPersons={notCoveredPersons} />
+      />}
+      {coveredPersons.items.length !== 0 && <NotCoveredTravellers notCoveredPersons={notCoveredPersons} />}
     </div>
   );
 }
