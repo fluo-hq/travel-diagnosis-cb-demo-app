@@ -2,11 +2,17 @@ import React from 'react';
 import Cover from './Cover';
 
 export default function Covers(props) {
-  const mainInsuranceCovers = extractMainCovers(props.covers).filter(cover => cover.assistance);
-  const insuranceCovers = extractStandardCovers(props.covers).filter(cover => cover.assistance);
+  const mainCovers = extractMainCovers(props.covers);
+  if (mainCovers.length !== 0){
+    return null;
+  }
+  const standardCovers = extractStandardCovers(props.covers);
+  
+  const mainInsuranceCovers = mainCovers.filter(cover => cover.assistance);
+  const insuranceCovers = standardCovers.filter(cover => cover.assistance);
 
-  const mainTravelCovers = extractMainCovers(props.covers).filter(cover => !cover.assistance);
-  const travelCovers = extractStandardCovers(props.covers).filter(cover => !cover.assistance);
+  const mainTravelCovers = mainCovers.filter(cover => !cover.assistance);
+  const travelCovers = standardCovers.filter(cover => !cover.assistance);
   
   const {
     insurance: travelDuration,
