@@ -5,6 +5,11 @@ import Ko from './Ko';
 import Ok from './Ok';
 
 export default function ImportantInformation(props) {
+  // We don't want to display important information when there are no information
+  if (props.paymentTerms === null && props.tripType === null){ 
+    return null;
+  }
+
   return (
     <div>
       <Typography variant="headline" component="h2">
