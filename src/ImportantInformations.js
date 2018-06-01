@@ -6,8 +6,8 @@ export default function ImportantInformation(props) {
     <div>
       <Typography variant="headline" component="h2">Informations importantes</Typography>
       <ul>
-        <li key={0}>{props.paymentTerms.label}</li>
-        <li key={1}>{props.tripType.label}</li>
+        {props.paymentTerms && <li key={0}>{props.paymentTerms.label}</li>}
+        {props.tripType && <li key={1}>{props.tripType.label}</li>}
       </ul>
     </div>
   )
