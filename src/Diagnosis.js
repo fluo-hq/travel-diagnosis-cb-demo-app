@@ -16,12 +16,13 @@ export default function Diagnosis(props) {
     tripType,
     notCoveredPersons,
     coverageDuration,
+    majorInsuranceCriteria,
   } = props.diagnosis;
   return (
     <div>
       <Typography variant="headline" component="h1" id="diagnosis-title">Diagnostique de la carte pour la destination : {props.destination.usualName}</Typography>
       <h3>{getCoverageDescription(coverage)}</h3>
-      <ImportantInformation paymentTerms={paymentTerms} tripType={tripType} />
+      <ImportantInformation paymentTerms={paymentTerms} tripType={tripType} majorInsuranceCriteria={majorInsuranceCriteria} />
       <Covers covers={covers} coverageDuration={coverageDuration} />
       <CoveredTravallers
         coveredPersons={coveredPersons}

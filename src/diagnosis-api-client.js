@@ -1,5 +1,5 @@
 const BASE_URL = "http://localhost:8080";
-const TOKEN = "";
+const TOKEN = "TODO_MY_JWT_PARTNER_TOKEN";
 
 export async function fetchBanks() {
   const response = await fetch(BASE_URL + '/diagnosis/payment_card/v1/banks', {
