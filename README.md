@@ -1,5 +1,7 @@
 # Travel diagnosis CB demo app
 
+[![Build Status](https://travis-ci.org/fluo-hq/travel-diagnosis-cb-demo-app.svg?branch=master)](https://travis-ci.org/fluo-hq/travel-diagnosis-cb-demo-app)
+
 ## Configuration
 
 - Open [diagnosis-api-client.js](https://github.com/fluo-hq/travel-diagnosis-cb-demo-app/blob/master/src/diagnosis-api-client.js#L1) and configure :
