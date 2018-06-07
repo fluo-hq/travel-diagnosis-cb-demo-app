@@ -31,8 +31,6 @@ export default function ImportantInformation(props) {
 }
 
 function Major(props) {
-  const majorInsuranceCriteria = props.majorInsuranceCriteria;
-
   return (
     <div>
       {props.majorInsuranceCriteria.map(criterion => {
