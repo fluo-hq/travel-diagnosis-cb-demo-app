@@ -34,7 +34,7 @@ export async function fetchCardsByBank(bank) {
 export async function fetchDestinations() {
   const response = await fetch(`${FLUO_DIAGNOSIS_HOST}/diagnosis/v1/countries`, {
     method: 'GET',
-    headers: 
+    headers: getHeaders()
   });
   
   return await response.json();
